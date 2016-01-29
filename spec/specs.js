@@ -31,7 +31,7 @@ describe('Order', function() {
     var newOrder = new Order()
     newOrder.Pizzas.push(pizza1)
     newOrder.Pizzas.push(pizza2)
-    expect(newOrder.printOrder()).to.eql("<li>Your 1st item has 2 toppings on a large pizza! costing 24</li><li>Your 2st item has 3 toppings on a medium pizza! costing 19</li><p class = \'totalOrder\'>your total order price will be 43</p>")
+    expect(newOrder.printOrder()).to.eql("<li>Your 1st item has 2 toppings on a large pizza! costing $24</li><li>Your 2st item has 3 toppings on a medium pizza! costing $19</li><p class = \'totalOrder\'>your total order price will be $43</p>")
   })
 })
 describe("Address", function() {
