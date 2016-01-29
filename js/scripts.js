@@ -32,6 +32,7 @@ $(".btn-primary").click(function() {
 $("form").submit(function (event) {
 
   event.preventDefault()
+  yes
 
 
 })
