@@ -6,7 +6,6 @@ function Pizza (toppings, pizzaSize) {
 Pizza.prototype.price = function () {
 var pizzaPrice = 10;
 var toppingsNumber = this.toppings.length
-
 if(this.pizzaSize === "small") {
   pizzaPrice = pizzaPrice -5
 }else if (this.pizzaSize === "medium") {
@@ -14,28 +13,35 @@ if(this.pizzaSize === "small") {
 }else {
   pizzaPrice = pizzaPrice +10
 }
-
 var toppingsPrice = toppingsNumber *2
-
 pizzaPrice = pizzaPrice + toppingsPrice;
-
 return pizzaPrice
-
 }
 
 
 
 $(document).ready(function() {
+var toppingsSelected = 0
 $(".btn-primary").click(function() {
   $(this).addClass("clicked")
+  toppingsSelected ++
+  $("#toppingsNum").text(toppingsSelected)
+});
 
 $("form").submit(function (event) {
-
+var size = $("#sizeList").val()
+console.log(size)
+var toppings = toppingsSelected
+console.log(toppings)
+var newPizza = new Pizza(toppings, size);
+console.log(newPizza)
+var finalPrice = newPizza.price(toppings, size)
+console.log(finalPrice)
+// $("#FinalPrice").text(newPizza.price(toppings, size))
   event.preventDefault()
 
+})
 
-})
-})
 
 
 });
