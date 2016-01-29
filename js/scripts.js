@@ -32,6 +32,15 @@ Order.prototype.totalPrice = function () {
   return orderPrice;
 }
 
+Order.prototype.printOrder = function () {
+  var text = ""
+  for (var i = 0; i<this.Pizzas.length; i++ ) {
+    text += "<li>Your "+ (i+1) + "st item has " + this.Pizzas[i].toppings + " toppings on a " + this.Pizzas[i].pizzaSize + " pizza! costing " +  this.Pizzas[i].pizzaPrice + "</li>"
+  }
+  text += "your total order price will be " + this.totalPrice()
+  return text;
+}
+
 $(document).ready(function() {
   var newOrder = new Order()
   var toppingsSelected = 0
@@ -54,15 +63,17 @@ $(document).ready(function() {
     var newPizza = new Pizza(toppings, pizzaSize);
     var finalPrice = newPizza.price(toppings, pizzaSize)
     $("#finalPrice").text(newPizza.price(toppings, pizzaSize))
-newOrder.Pizzas.push(newPizza);
-console.log(newOrder)
+      newOrder.Pizzas.push(newPizza);
+      console.log(newOrder)
     event.preventDefault()
     $(".pizzaPrintout").append("<li>you've selected " + newPizza.toppings + " toppings on a " + newPizza.pizzaSize + " pizza! Sounds delicous!</li>")
   })
 
 
+  $(".viewOrder").click(function () {
+    $(".orderDetails").text("")
+      $(".orderDetails").append(newOrder.printOrder())
 
-
-
+  })
 
 });
