@@ -52,10 +52,7 @@ $(document).ready(function() {
     toppingsSelected++
     $("#toppingsNum").text(toppingsSelected)
   });
-  $(".clicked").click(function() {
-    toppingsSelected--
-    $("#toppingsNum").text(toppingsSelected)
-  });
+
   $("form").submit(function(event) {
     var pizzaSize = $("#sizeList").val()
     var toppings = toppingsSelected
@@ -66,6 +63,7 @@ $(document).ready(function() {
       newOrder.Pizzas.push(newPizza);
       console.log(newOrder)
     event.preventDefault()
+    $(".pizzaPrintout").text("")
     $(".pizzaPrintout").append("<li>you've selected " + newPizza.toppings + " toppings on a " + newPizza.pizzaSize + " pizza! Sounds delicous!</li>")
   })
 
